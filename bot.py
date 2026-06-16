@@ -3,7 +3,21 @@ Telegram-бот для @botcodeskbot
 Услуги, согласие на ПД, фиксация заявок
 Запуск: python bot.py
 """
+import os
+import threading
+import http.server
+import socketserver
 
+def start_health_server():
+    port = int(os.getenv("PORT", 10000))
+    Handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", port), Handler) as httpd:
+        print(f"Health server on port {port}")
+        httpd.serve_forever()
+
+if name == "__main__":
+    threading.Thread(target=start_health_server, daemon=True).start()
+    # твой бот...
 import asyncio
 import sqlite3
 import datetime
