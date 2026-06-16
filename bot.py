@@ -304,14 +304,18 @@ async def process_comment(message: types.Message, state: FSMContext):
     uname = f"@{message.from_user.username}" if message.from_user.username else message.from_user.full_name
     tg_link = f"tg://user?id={message.from_user.id}"
     try:
-        await bot.send_message(
-            ADMIN_ID,
-            f"🔔 *Новая заявка!*\n\n"
-            f"От: [{message.from_user.full_name}]({tg_link}) ({uname})\n"
-            f"Услуга: {svc['name']}\n"
-            f"Сумма: {price_str}\n"
-            f"Комментарий: {comment}\n"
-            f"Время: {datetime.datetime.now().strftime('%d.%m.%Y %H:%M')}",
+       await bot.send_message(
+    ADMIN_ID,
+    f"""
+Новая заявка!
+
+Пользователь: {message.from_user.full_name}
+Username: {uname}
+Услуга: {svc['name']}
+Сумма: {price_str}
+Комментарий: {comment}
+""",
+)
         
         )
     except Exception as e:
