@@ -21,7 +21,7 @@ from aiogram.fsm.state import State, StatesGroup
 
 # ─── НАСТРОЙКИ ────────────────────────────────────────────────────────────────
 
-TOKEN = os.getenv("BOT_TOKEN", "8784571171:AAHOp9d3fgbKcEL8bozuPPTAupWMJ6OHZQc")
+TOKEN = os.getenv("BOT_TOKEN", "8142212744:AAHccNbw832FhtuBMN3t6CRjJIVX2Ydqcb8")
 ADMIN_ID = int(os.getenv("ADMIN_ID", "6367874675"))  # числовой ID
 CHANNEL_URL = "https://t.me/IgorBroker"
 MANAGER_URL  = "https://t.me/Igor_Broker_off"
