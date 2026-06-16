@@ -5,19 +5,25 @@ Telegram-бот для @botcodeskbot
 """
 import os
 import threading
-import http.server
-import socketserver
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
-def start_health_server():
-    port = int(os.getenv("PORT", 10000))
-    Handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", port), Handler) as httpd:
-        print(f"Health server on port {port}")
-        httpd.serve_forever()
+# ==================== HEALTH SERVER FOR RENDER ====================
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'OK')
 
+def run_health_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(('0.0.0.0', port), HealthHandler)
+    print(f"✅ Health check server started on port {port}")
+    server.serve_forever()
+
+# ==================== ЗАПУСК ====================
 if name == "__main__":
-    threading.Thread(target=start_health_server, daemon=True).start()
-    # твой бот...
+    # Запускаем health-сервер в фоне
+    threading.Thread(target=run_health_server, daemon=True).start()
 import asyncio
 import sqlite3
 import datetime
@@ -329,12 +335,10 @@ Username: {uname}
 Сумма: {price_str}
 Комментарий: {comment}
 """,
-)
-        
+) 
         )
     except Exception as e:
         logging.warning(f"Не удалось уведомить админа: {e}")
-
 # ─── ЗАПУСК ───────────────────────────────────────────────────────────────────
 
 async def main():
