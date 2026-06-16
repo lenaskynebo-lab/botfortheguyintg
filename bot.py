@@ -21,7 +21,7 @@ def run_health_server():
     server.serve_forever()
 
 # ==================== ЗАПУСК ====================
-if name == "__main__":
+if __name__ == "__main__":
     # Запускаем health-сервер в фоне
     threading.Thread(target=run_health_server, daemon=True).start()
 import asyncio
