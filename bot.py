@@ -312,7 +312,7 @@ async def process_comment(message: types.Message, state: FSMContext):
             f"Сумма: {price_str}\n"
             f"Комментарий: {comment}\n"
             f"Время: {datetime.datetime.now().strftime('%d.%m.%Y %H:%M')}",
-            parse_mode="Markdown"
+        
         )
     except Exception as e:
         logging.warning(f"Не удалось уведомить админа: {e}")
