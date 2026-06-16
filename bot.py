@@ -320,13 +320,12 @@ async def process_comment(message: types.Message, state: FSMContext):
         reply_markup=after_order_kb()
     )
 
-    # уведомление админу
+        # уведомление админу
     uname = f"@{message.from_user.username}" if message.from_user.username else message.from_user.full_name
-    tg_link = f"tg://user?id={message.from_user.id}"
     try:
-       await bot.send_message(
-    ADMIN_ID,
-    f"""
+        await bot.send_message(
+            ADMIN_ID,
+            f"""
 Новая заявка!
 
 Пользователь: {message.from_user.full_name}
@@ -334,8 +333,7 @@ Username: {uname}
 Услуга: {svc['name']}
 Сумма: {price_str}
 Комментарий: {comment}
-""",
-) 
+"""
         )
     except Exception as e:
         logging.warning(f"Не удалось уведомить админа: {e}")
