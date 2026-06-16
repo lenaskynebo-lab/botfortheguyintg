@@ -21,10 +21,10 @@ from aiogram.fsm.state import State, StatesGroup
 
 # ─── НАСТРОЙКИ ────────────────────────────────────────────────────────────────
 
-TOKEN = os.getenv("BOT_TOKEN", "ВСТАВЬ_ТОКЕН_СЮДА")
-ADMIN_ID = int(os.getenv("ADMIN_ID", "ВСТАВЬ_СВОЙ_TELEGRAM_ID"))  # числовой ID
-CHANNEL_URL = "https://t.me/ВАШ_КАНАЛ"
-MANAGER_URL  = "https://t.me/IgorBroker"
+TOKEN = os.getenv("BOT_TOKEN", "8784571171:AAHOp9d3fgbKcEL8bozuPPTAupWMJ6OHZQc")
+ADMIN_ID = int(os.getenv("ADMIN_ID", "6367874675"))  # числовой ID
+CHANNEL_URL = "https://t.me/IgorBroker"
+MANAGER_URL  = "https://t.me/Igor_Broker_off"
 
 # ─── КАТАЛОГ УСЛУГ ────────────────────────────────────────────────────────────
 
